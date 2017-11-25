@@ -97,7 +97,7 @@ func main() {
 	wg.Wait()
 
 	obj := author_map[os.Args[1]]
-	fmt.Printf("Name: %s -- Postel #: %d\n", obj.name, obj.dist)
+	fmt.Printf("Name: %s -- Postel #: %d (%d)\n", obj.name, obj.dist, len(obj.paths))
 	for _, path := range obj.paths {
 		for _, path_obj := range path {
 			fmt.Printf("%s -> ", path_obj.name)
