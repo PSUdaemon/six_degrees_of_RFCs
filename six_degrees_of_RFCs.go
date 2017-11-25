@@ -84,6 +84,12 @@ func main() {
 
 	fmt.Printf("Ingested file rfc-index.xml\nProcessed %d RFCs\nProcessed %d unique authors\n", document_count, author_count)
 
+	_, ok := author_map[os.Args[1]]
+	if !ok {
+		fmt.Printf("%s not found\n", os.Args[1])
+		os.Exit(1)
+	}
+
 	wg.Add(1)
 
 	go do_work(&wg, 0, author_map["J. Postel"], []*ietf_object{})
